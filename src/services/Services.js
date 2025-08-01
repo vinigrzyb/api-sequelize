@@ -9,6 +9,14 @@ class Services {
         return dataSource[this.model].findAll();
     }
 
+    async getRecordById() {
+        return dataSource[this.model].findByPk(id);
+    }
+
+    async createRecord(recordData) {
+        return dataSource[this.model].create(recordData);
+    }
+
     async updateRecord(newData, id) {
         //o método update retorna um array com o número de linhas alteradas na tabela
         const updatedRecordsList = dataSource[this.model].update(newData, {
@@ -19,6 +27,10 @@ class Services {
             return false;
         }
         return true;
+    }
+
+    async deleteRecord(id) {
+        return dataSoruce[this,model].destroy({ where: { id } })
     }
 }
 module.exports = Services;
